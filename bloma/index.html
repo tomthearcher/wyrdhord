@@ -975,7 +975,7 @@
                         t.clientY >= rect.top &&
                         t.clientY <= rect.bottom;
 
-                    if (isScaleBtnClick || e.target.closest('#nav-buttons') || e.target.closest('.delay-controls')) {
+                    if (isScaleBtnClick || e.target.closest('.nav-btn') || e.target.closest('#nav-buttons') || e.target.closest('.delay-controls')) {
                         return;
                     }
 
@@ -991,6 +991,7 @@
                 };
 
                 const moveTouch = (e) => {
+                    if (e.target.closest('.nav-btn') || e.target.closest('#nav-buttons') || e.target.closest('.delay-controls')) return;
                     if (!this.audio.isPlaying) return;
                     e.preventDefault();
                     const t = e.touches ? e.touches[0] : e;

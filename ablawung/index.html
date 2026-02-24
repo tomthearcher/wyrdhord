@@ -262,7 +262,25 @@
                 height: 100%;
             }
         }
-    </style>
+    
+@media (max-width: 800px) {
+            .header {
+                top: 70px;
+            }
+        }
+        @media screen and (orientation: portrait) and (max-width: 800px) {
+            body {
+                transform: rotate(90deg);
+                transform-origin: center center;
+                width: 100vh;
+                height: 100vw;
+                overflow: hidden;
+                position: fixed;
+                top: calc(50vh - 50vw);
+                left: calc(50vw - 50vh);
+            }
+        }
+        </style>
 </head>
 
 <body>
@@ -753,7 +771,7 @@
         };
 
         function goToRandom() {
-            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'Sceo', 'Wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
+            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'sceo', 'wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
             let next = apps[Math.floor(Math.random() * apps.length)];
             window.location.href = '../' + next + '/';
         }

@@ -1,5 +1,5 @@
 /**
- * MIDI Handler for Wyrdhord collection.
+ * MIDI Handler for WebApps_MENU collection.
  * Provides a unified interface for MIDI Notes, CC, and Clock.
  */
 
@@ -81,7 +81,7 @@ window.MIDIHandler = (function () {
         if (lastClockTime > 0) {
             // Clock is sent 24 times per quarter note (PPQN)
             let period = now - lastClockTime;
-            // Very basic BPM calculation 
+            // Very basic BPM calculation (averaging would be better for stability)
             // but this updates every clock tick
             // bpm = 60000 / (period * 24); 
         }

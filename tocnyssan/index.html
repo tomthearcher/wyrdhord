@@ -302,7 +302,13 @@
                 opacity: 0;
             }
         }
-    </style>
+    
+@media (max-width: 800px) {
+            .title-block {
+                top: 70px;
+            }
+        }
+        </style>
 </head>
 
 <body>
@@ -871,7 +877,7 @@
 
     <script>
         function goToRandom() {
-            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'Sceo', 'Wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
+            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'sceo', 'wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
             let next = apps[Math.floor(Math.random() * apps.length)];
             while (next === 'tocnyssan') next = apps[Math.floor(Math.random() * apps.length)];
             window.location.href = '../' + next + '/';

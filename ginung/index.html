@@ -362,7 +362,20 @@
             color: #000;
             border-color: #fff;
         }
-    </style>
+    
+@media (max-width: 800px) {
+            .title-block {
+                margin-top: 48px;
+            }
+            #nav-buttons {
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 9999;
+            }
+        }
+        </style>
 </head>
 
 <body>
@@ -476,7 +489,7 @@
 
         // ==================== RANDOM APP NAVIGATION ====================
         function randomApp() {
-            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'Sceo', 'Wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
+            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'sceo', 'wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
             let random = apps[Math.floor(Math.random() * apps.length)];
             while (window.location.href.includes(random)) {
                 random = apps[Math.floor(Math.random() * apps.length)];

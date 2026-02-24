@@ -432,6 +432,9 @@
         function setupInteraction() {
             const updateTarget = (e) => {
                 if (!isStarted) return;
+
+                if (e.target.closest('.nav-btn')) return;
+
                 const x = e.touches ? e.touches[0].clientX : e.clientX;
                 const y = e.touches ? e.touches[0].clientY : e.clientY;
                 wanderer.targetX = x;
@@ -442,8 +445,13 @@
 
             window.addEventListener('mousemove', updateTarget);
             window.addEventListener('touchmove', (e) => {
+                if (e.target.closest('.nav-btn')) return;
                 e.preventDefault();
                 updateTarget(e);
+            }, { passive: false });
+
+            window.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.nav-btn')) return;
             }, { passive: false });
         }
 
@@ -659,7 +667,7 @@
         };
 
         function goToRandom() {
-            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'Sceo', 'Wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
+            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'sceo', 'wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
             let next = apps[Math.floor(Math.random() * apps.length)];
             window.location.href = '../' + next + '/';
         }
