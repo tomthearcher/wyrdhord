@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../nav.css">
     <style>
         :root {
             --bg: #000;
@@ -42,11 +43,6 @@
             left: 0;
         }
 
-        #nav-buttons {
-            display: flex;
-            gap: 12px;
-            pointer-events: auto;
-        }
 
         .ui-layer {
             position: fixed;
@@ -102,29 +98,7 @@
             text-transform: uppercase;
         }
 
-        .nav-btn {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #666;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-family: var(--font-main);
-            font-size: 14px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.2s;
-        }
 
-        .nav-btn:hover {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-        }
 
         canvas {
             display: block;
@@ -134,43 +108,25 @@
             touch-action: none;
         }
 
-        #start-overlay {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            gap: 20px;
-        }
 
         .big-btn {
             background: transparent;
-            border: 1px solid #fff;
-            padding: min(20px, 4vw) min(50px, 10vw);
-            font-size: min(14px, 4vw);
-            letter-spacing: min(5px, 1vw);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff;
+            padding: 16px 32px;
+            font-family: var(--font-main);
+            font-size: 12px;
+            letter-spacing: 3px;
             cursor: pointer;
-            transition: all 0.4s;
+            transition: all 0.3s ease;
             text-transform: uppercase;
-            font-weight: 600;
-            min-width: 150px;
         }
 
         .big-btn:hover {
-            background: #fff;
-            color: #000;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
         }
 
-        .init-text {
-            color: #333;
-            font-size: min(10px, 3vw);
-            text-transform: uppercase;
-            letter-spacing: min(4px, 1vw);
-        }
 
         #orientation-overlay {
             position: fixed;
@@ -205,12 +161,6 @@
 
         /* Mobile-specific optimizations */
         @media (max-width: 768px) {
-            .nav-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 13px;
-            }
-
             #mode-indicator {
                 bottom: 10px;
                 right: 10px;
@@ -276,6 +226,7 @@
             transform: scale(1.2);
         }
     </style>
+    <script src="../nav.js"></script>
 </head>
 
 <body class="no-select">
@@ -287,14 +238,14 @@
     </div>
 
     <div id="start-overlay">
-        <button class="big-btn" id="init-btn">initialise</button>
-        <div class="init-text">Bronzeworks in the dark</div>
+        <button class="big-btn" id="init-btn">INITIALISE</button>
+        <div class="hint">Bronzeworks in the dark</div>
     </div>
 
-    <div id="nav-buttons"
+    <div id="persistent-nav"
         style="position: fixed; top: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 10000;">
-        <button class="nav-btn" onclick="window.location.href='../index.html'">M</button>
-        <button class="nav-btn" onclick="randomApp()">R</button>
+        <button class="nav-btn" onclick="goToMenu()">M</button>
+        <button class="nav-btn" onclick="goToRandom()">R</button>
     </div>
 
     <div class="ui-layer" id="ui-layer">
@@ -775,14 +726,6 @@
             requestAnimationFrame(animate);
         }
 
-        function randomApp() {
-            const apps = ['freosan', 'bryne', 'hrinan', 'ginung', 'druh', 'ceorf', 'bloma', 'mynd', 'hrisian', 'tocnyssan', 'gleobeam', 'gimcynn', 'sceo', 'wudubora', 'hlof', 'hearg', 'organistre', 'ablawung', 'afindan', 'sceacel'];
-            let random = apps[Math.floor(Math.random() * apps.length)];
-            while (window.location.href.includes(random)) {
-                random = apps[Math.floor(Math.random() * apps.length)];
-            }
-            window.location.href = '../' + random + '/';
-        }
     </script>
 
 
