@@ -61,28 +61,17 @@
             padding: 24px;
         }
 
+        /* title-block is a flex item in .ui-layer column; keep it in flow */
+        .title-block {
+            position: static;
+            opacity: 0.8;
+        }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             pointer-events: none;
-        }
-
-        .title {
-            font-weight: 600;
-            font-size: 24px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            mix-blend-mode: difference;
-        }
-
-        .subtitle {
-            font-weight: 300;
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: var(--accent-color);
-            margin-top: 4px;
-            text-transform: uppercase;
         }
 
         .controls {
@@ -166,9 +155,9 @@
     <canvas id="canvas"></canvas>
 
     <div class="ui-layer">
-        <div class="header">
+        <div class="title-block">
             <div>
-                <div class="title">Hrisian</div>
+                <div class="title">HRISIAN</div>
                 <div class="subtitle">Resonant Body</div>
             </div>
         </div>

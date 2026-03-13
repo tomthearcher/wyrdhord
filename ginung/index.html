@@ -58,23 +58,10 @@
             pointer-events: auto;
         }
 
+        /* title-block is a flex item in .header alongside toggle-btn */
         .title-block {
-            text-align: left;
+            position: static;
             opacity: 0.8;
-        }
-
-        .title {
-            font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 4px;
-            margin-bottom: 4px;
-        }
-
-        .subtitle {
-            font-weight: 300;
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: var(--accent-color);
         }
 
         .toggle-btn {
@@ -289,11 +276,6 @@
 
 
     
-@media (max-width: 800px) {
-            .title-block {
-                margin-top: 48px;
-            }
-        }
         </style>
     <script src="../nav.js"></script>
 </head>

@@ -52,28 +52,13 @@
             pointer-events: none;
         }
 
+   
+
+        /* title-block is a grid column here, not a standalone fixed element */
         .title-block {
-            text-align: left;
+            position: static;
             opacity: 0.8;
             pointer-events: none;
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .title-text {
-            font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 4px;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .subtitle-text {
-            font-weight: 300;
-            font-size: 10px;
-            letter-spacing: 2px;
-            color: var(--accent);
-            text-transform: uppercase;
         }
 
         /* Center column – holds M and R buttons */
@@ -103,13 +88,7 @@
             letter-spacing: 1px;
         }
 
-        .title {
-            font-size: 12px;
-            letter-spacing: 3px;
-            font-weight: 300;
-            color: #888;
-            text-transform: uppercase;
-        }
+
 
         /* Class to hide elements until after initialisation */
         .init-hidden {
@@ -235,8 +214,8 @@
     <header id="ui-header">
         <!-- Left: title and subtitle (initially hidden) -->
         <div class="title-block init-hidden">
-            <div class="title-text">ORGANISTRE</div>
-            <div class="subtitle-text">MICROTONAL REED ORGAN</div>
+            <div class="title">ORGANISTRE</div>
+            <div class="subtitle">MICROTONAL REED ORGAN</div>
         </div>
 
         <!-- Center: M and R buttons (always visible) -->
