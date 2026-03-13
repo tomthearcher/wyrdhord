@@ -136,18 +136,6 @@
             top: 24px;
             right: 24px;
             z-index: 2000;
-            background: rgba(0,0,0,0.5);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            font-family: 'Josefin Sans', sans-serif;
-            backdrop-filter: blur(10px);
-            transition: all 0.2s;
         }
     
 @media (max-width: 800px) {
@@ -195,8 +183,7 @@
     </header>
 
     <!-- Hide button (fixed, unchanged) -->
-    <button id="toggle-header"
-        style="position: fixed; top: 24px; right: 24px; z-index: 99; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; font-family: 'Josefin Sans', sans-serif; backdrop-filter: blur(10px); transition: all 0.2s;">Hide</button>
+    <button id="toggle-header" class="right-btn">Hide</button>
 
     <div id="container">
         <canvas id="canvas"></canvas>

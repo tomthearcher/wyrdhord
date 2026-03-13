@@ -64,28 +64,7 @@
             opacity: 0.8;
         }
 
-        .load-btn {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--text-color);
-            padding: 10px 18px;
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            text-transform: uppercase;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s ease;
-        }
 
-        .load-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #fff;
-        }
-
-        .load-btn:active {
-            transform: scale(0.96);
-        }
 
         #pad-container {
             position: absolute;
@@ -318,7 +297,7 @@
                 <div class="title">HRINAN</div>
                 <div class="subtitle">LOFI LOOPING MULTIFX</div>
             </div>
-            <button class="load-btn" id="load-button">Load</button>
+            <button class="load-btn right-btn" id="load-button">Load</button>
             <input type="file" id="file-input" accept="audio/*">
         </div>
 

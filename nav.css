@@ -37,6 +37,29 @@
   border-color: #fff;
 }
 
+/* === Right-side action button === */
+.right-btn {
+  background: var(--glass-bg, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+  color: var(--text-color, #fff);
+  padding: 8px 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  white-space: nowrap;
+}
+
+.right-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
 /* === Activity Title Block === */
 .title-block,
 .title-group {
@@ -48,6 +71,24 @@
   pointer-events: none;
   z-index: 1000;
   transition: opacity 0.3s ease;
+  max-width: calc(50vw - 80px);
+}
+
+@media (max-width: 600px) {
+  .title-text,
+  .title-main,
+  .title-block .title,
+  .title-group .title {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .subtitle,
+  .subtitle-text,
+  .title-sub {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
 }
 
 /* === Activity Titles === */

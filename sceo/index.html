@@ -68,45 +68,20 @@
 
 
 
-        /* ===== HEADER LAYOUT (three‑column grid) ===== */
-        .header {
-            position: fixed;
-            top: 16px;
-            left: 24px;
-            right: 24px;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            align-items: center;
-            gap: 20px;
-            pointer-events: none;
-            z-index: 10001;
-        }
-
-        /* title-block is a grid column; keep it in flow */
+        /* title-block is managed by nav.css (position: fixed) */
         .title-block {
             position: static;
             opacity: 0.8;
         }
-        .nav-right {
-            justify-self: end;
-            pointer-events: auto;
-        }
 
         #toggle-controls {
-            background: transparent;
-            border: none;
-            color: #fff;
-            opacity: 0.3;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 12px;
-            transition: opacity 0.3s;
+            position: fixed;
+            top: 16px;
+            right: 24px;
+            z-index: 10001;
         }
 
-        #toggle-controls:hover {
-            opacity: 1;
-        }
+
 
 
 
@@ -207,10 +182,6 @@
                 font-size: 9px;
             }
 
-            #toggle-controls {
-                font-size: 10px;
-            }
-
             .header {
                 gap: 10px;
             }
@@ -228,22 +199,14 @@
 
     <canvas id="canvas"></canvas>
     <div id="ui-layer">
-        <!-- ===== HEADER (title left, controls right) ===== -->
-        <div class="header">
-            <!-- Left: title -->
-            <div class="title-block">
-                <div class="title">SCEO</div>
-                <div class="subtitle">CLOUD-CHAMBER BOWLS</div>
-            </div>
-
-            <!-- Center: empty placeholder to keep grid spacing (buttons moved to persistent-nav) -->
-            <div style="justify-self: center;"></div>
-
-            <!-- Right: Controls toggle button -->
-            <div class="nav-right">
-                <button id="toggle-controls">Controls</button>
-            </div>
+        <!-- Title (managed by nav.css as position:fixed) -->
+        <div class="title-block">
+            <div class="title">SCEO</div>
+            <div class="subtitle">CLOUD-CHAMBER BOWLS</div>
         </div>
+
+        <!-- Controls toggle button (fixed top-right) -->
+        <button id="toggle-controls" class="right-btn">Controls</button>
 
         <!-- Controls container (bottom) -->
         <div id="controls-container">

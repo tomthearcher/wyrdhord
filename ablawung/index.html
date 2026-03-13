@@ -184,6 +184,14 @@
                 height: 100%;
             }
         }
+
+        #toggle-ui {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+            opacity: 0;
+        }
     </style>
     <script src="../nav.js"></script>
 </head>
@@ -200,8 +208,7 @@
         <button class="nav-btn" onclick="goToRandom()">R</button>
     </div>
 
-    <button id="toggle-ui"
-        style="position: fixed; top: 24px; right: 24px; background:none; border:none; color:#fff; opacity:0; cursor:pointer; font-size:10px; letter-spacing:1px; text-transform:uppercase; pointer-events: auto; z-index: 1000; transition: opacity 0.3s;">Hide</button>
+    <button id="toggle-ui" class="right-btn">Hide</button>
 
     <div class="header" style="opacity: 0; transition: opacity 0.3s;">
         <div class="title-block">

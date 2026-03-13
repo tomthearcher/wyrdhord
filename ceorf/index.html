@@ -99,23 +99,7 @@
 
 
         .upload-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 8px 16px;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: inline-block;  /* so it sits nicely in the grid cell */
-            white-space: nowrap;
-        }
-
-        .upload-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            display: inline-block;
         }
 
         #file-input {
@@ -215,7 +199,7 @@
             <button class="nav-btn" onclick="goToRandom()">R</button>
         </div>
         <div class="nav-right init-hidden">
-            <label class="upload-btn">
+            <label class="upload-btn right-btn">
                 LOAD AUDIO
                 <input type="file" id="file-input" accept="audio/*">
             </label>

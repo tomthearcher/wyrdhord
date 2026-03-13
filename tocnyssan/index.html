@@ -119,22 +119,8 @@
             position: fixed;
             top: 24px;
             right: 24px;
-            cursor: pointer;
-            font-size: 10px;
-            letter-spacing: 2px;
-            border: 1px solid #333;
-            padding: 8px 16px;
-            border-radius: 15px;
+            z-index: 10001;
             pointer-events: auto;
-            z-index: 10000;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            transition: all 0.2s;
-        }
-
-        #file-trigger:hover {
-            border-color: #fff;
-            background: rgba(255, 255, 255, 0.1);
         }
 
         .bottom-controls {
@@ -255,7 +241,7 @@
     </div>
 
     <!-- LOAD AUDIO button (right) – hidden initially -->
-    <div id="file-trigger" class="init-hidden">LOAD AUDIO</div>
+    <div id="file-trigger" class="right-btn init-hidden">LOAD AUDIO</div>
 
     <div id="app">
         <!-- Title (left) – hidden initially -->

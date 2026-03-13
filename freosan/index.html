@@ -55,23 +55,7 @@
             position: fixed;
             top: 24px;
             right: 24px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--text-color);
-            padding: 8px 16px;
-            font-family: 'Inter', sans-serif;
-            font-size: 10px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            text-transform: uppercase;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .load-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #fff;
+            z-index: 10001;
         }
 
         .controls-container {
@@ -185,7 +169,7 @@
                 <div class="title">FREOSAN</div>
                 <div class="subtitle" id="track-name">GRANULAR SYNTHESISER PAD</div>
             </div>
-            <button class="load-btn" onclick="document.getElementById('file-input').click()">Load Audio</button>
+            <button class="load-btn right-btn" onclick="document.getElementById('file-input').click()">Load Audio</button>
             <input type="file" id="file-input"
                 accept="audio/mpeg, audio/wav, audio/ogg, audio/mp4, audio/webm, .mp3, .wav, .ogg, .m4a, .webm, .opus">
         </div>
