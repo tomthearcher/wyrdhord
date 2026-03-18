@@ -167,6 +167,7 @@
   letter-spacing: 1px;
   text-align: center;
   line-height: 1.8;
+  text-transform: uppercase;
 }
 #start-overlay {
   z-index: 100;

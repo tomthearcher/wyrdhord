@@ -27,6 +27,8 @@
             font-family: var(--font-main);
             overflow: hidden;
             user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
             display: flex;
             flex-direction: column;
             height: 100dvh;
@@ -232,6 +234,7 @@
             canvas.addEventListener('pointermove', handlePointerMove);
             window.addEventListener('pointerup', handlePointerUp);
             window.addEventListener('pointercancel', handlePointerUp);
+            document.addEventListener('contextmenu', e => e.preventDefault());
         };
 
         function resize() {

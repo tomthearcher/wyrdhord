@@ -118,6 +118,26 @@
             z-index: 1000;
             opacity: 0;
         }
+
+        #tap-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            pointer-events: auto;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        #tap-overlay.visible {
+            opacity: 1;
+        }
     </style>
     <script src="../nav.js"></script>
 </head>
@@ -127,6 +147,10 @@
     <div id="start-overlay" onclick="start()">
         <button class="start-btn">INITIALISE</button>
         <div class="hint">HARMONIC MAZE SYNTHESISER</div>
+    </div>
+
+    <div id="tap-overlay">
+        <div class="hint">TAP TO BEGIN</div>
     </div>
 
     <div class="ui-layer" id="ui-layer">
@@ -353,14 +377,14 @@
             wanderer.y = height / 2;
             wanderer.targetX = width / 2;
             wanderer.targetY = height / 2;
-
+            
             setupInteraction();
             animate();
         }
 
         function setupInteraction() {
             const updateTarget = (e) => {
-                if (!isStarted) return;
+                if (!isStarted || !audioInitialized) return;
 
                 if (e.target.closest('.nav-btn')) return;
 
@@ -378,10 +402,35 @@
                 e.preventDefault();
                 updateTarget(e);
             }, { passive: false });
+        }
 
-            window.addEventListener('touchstart', (e) => {
+        function registerTapToBegin() {
+            const activateAudio = (e) => {
+                if (audioInitialized) return;
                 if (e.target.closest('.nav-btn')) return;
-            }, { passive: false });
+
+                audioInitialized = true;
+
+                const tapOverlay = document.getElementById('tap-overlay');
+                tapOverlay.classList.remove('visible');
+                setTimeout(() => { tapOverlay.style.display = 'none'; }, 800);
+
+                const x = e.touches ? e.touches[0].clientX : e.clientX;
+                const y = e.touches ? e.touches[0].clientY : e.clientY;
+                wanderer.targetX = x;
+                wanderer.targetY = y;
+
+                window.removeEventListener('click', activateAudio);
+                window.removeEventListener('touchstart', tapHandler);
+            };
+
+            const tapHandler = (e) => {
+                if (e.target.closest('.nav-btn')) return;
+                activateAudio(e);
+            };
+
+            window.addEventListener('click', activateAudio);
+            window.addEventListener('touchstart', tapHandler, { passive: false });
         }
 
         function resize() {
@@ -445,7 +494,6 @@
                     await audioCtx.resume();
                 }
 
-                audioInitialized = true;
                 isStarted = true;
                 window.isStarted = true;
 
@@ -453,7 +501,9 @@
                 document.getElementById('start-overlay').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('start-overlay').style.display = 'none';
-                }, 1500);
+       
+                    registerTapToBegin();
+                }, 15);
 
                 // Show UI elements after initialization
                 setTimeout(() => {

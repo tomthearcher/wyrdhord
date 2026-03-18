@@ -150,9 +150,9 @@
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px;
+            gap: 0;
             z-index: 10;
-            padding: 15px 25px;
+            padding: 15px 15px;
             background: rgba(10, 10, 10, 0.8);
             border-radius: 40px;
             border: 1px solid var(--dim);
@@ -171,6 +171,8 @@
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            padding: 0 12px;
+            cursor: ns-resize;
         }
 
         .drawbar {
@@ -181,6 +183,7 @@
             border-radius: 4px;
             cursor: ns-resize;
             border: 1px solid #333;
+            pointer-events: none;
         }
 
         .drawbar-fill {
@@ -310,15 +313,17 @@
         };
 
         function initUIHandlers() {
-            document.querySelectorAll('.drawbar').forEach(el => {
-                el.onpointerdown = (e) => {
-                    el.isDragging = true;
+            document.querySelectorAll('.drawbar-container').forEach(container => {
+                const el = container.querySelector('.drawbar');
+                container.onpointerdown = (e) => {
+                    container.isDragging = true;
+                    container.setPointerCapture(e.pointerId);
                     updateDrawbar(e, el);
                 };
-                window.addEventListener('pointermove', (e) => {
-                    if (el.isDragging) updateDrawbar(e, el);
+                container.addEventListener('pointermove', (e) => {
+                    if (container.isDragging) updateDrawbar(e, el);
                 });
-                window.addEventListener('pointerup', () => el.isDragging = false);
+                container.addEventListener('pointerup', () => container.isDragging = false);
             });
         }
 

@@ -131,8 +131,7 @@
             line-height: 1.4;
         }
 
-        .column:hover .ratio-label,
-        .column.active .ratio-label {
+        .column.last-active .ratio-label {
             opacity: 0.6;
         }
 
@@ -173,11 +172,31 @@
             left: 62px;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 600px) and (orientation: portrait) {
             #columns-container {
-                padding: 0 5%;
+                padding: 0;
                 flex-direction: row;
-                height: 70%;
+                top: 90px;
+                height: calc(100% - 150px);
+                overflow: visible;
+            }
+
+            .column {
+                height: 100%;
+            }
+
+            /* .ratio-label {
+                bottom: -44px;
+                font-size: 8px;
+                letter-spacing: 0.5px;
+            } */
+        }
+
+        @media (max-width: 600px) and (orientation: landscape) {
+            #columns-container {
+                padding: 0;
+                flex-direction: row;
+                height: 100%;
             }
 
             .column {
@@ -545,6 +564,8 @@
                         col.morph = Math.max(0, Math.min(1, yNormal));
                         col.touchY = 1 - yNormal;
                         col.el.classList.add('active');
+                        columns.forEach(c => c.el.classList.remove('last-active'));
+                        col.el.classList.add('last-active');
                         col.initNodes();
                     }
                 });

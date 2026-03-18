@@ -150,17 +150,19 @@
             appearance: none;
             width: 100%;
             background: transparent;
+            padding: 16px 0;
+            cursor: pointer;
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            height: 12px;
-            width: 12px;
+            height: 10px;
+            width: 10px;
             border-radius: 50%;
             background: var(--fg-color);
             cursor: pointer;
-            margin-top: -5px;
+            margin-top: -4px;
 
         }
 
@@ -168,6 +170,20 @@
             width: 100%;
             height: 2px;
             cursor: pointer;
+            background: #333;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            border: none;
+            background: var(--fg-color);
+            cursor: pointer;
+        }
+
+        input[type="range"]::-moz-range-track {
+            height: 2px;
             background: #333;
         }
 
@@ -642,6 +658,30 @@
             bpm = parseInt(e.target.value);
             bpmVal.textContent = bpm;
             e.stopPropagation();
+        });
+
+        function setBpmFromPointer(e) {
+            const rect = bpmInput.getBoundingClientRect();
+            const min = parseInt(bpmInput.min);
+            const max = parseInt(bpmInput.max);
+            const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+            const val = Math.round(min + ratio * (max - min));
+            bpmInput.value = val;
+            bpm = val;
+            bpmVal.textContent = bpm;
+        }
+
+        bpmInput.addEventListener('pointerdown', (e) => {
+            setBpmFromPointer(e);
+            bpmInput.setPointerCapture(e.pointerId);
+            e.stopPropagation();
+        });
+
+        bpmInput.addEventListener('pointermove', (e) => {
+            if (e.buttons > 0) {
+                setBpmFromPointer(e);
+                e.stopPropagation();
+            }
         });
 
         document.querySelector('.bottom-controls').addEventListener('mousedown', (e) => e.stopPropagation());

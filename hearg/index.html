@@ -84,6 +84,8 @@
             height: 100dvh;
             cursor: crosshair;
             touch-action: none;
+            z-index: 1;
+            position: relative;
         }
 
 
@@ -159,7 +161,7 @@
             position: fixed;
             bottom: max(20px, env(safe-area-inset-bottom));
             left: max(20px, env(safe-area-inset-left));
-            z-index: 1000;
+            z-index: 5000;
             display: flex;
             flex-direction: column;
             gap: 8px;

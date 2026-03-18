@@ -62,3 +62,5 @@ function goToRandom() {
   } while (window.location.href.includes("/" + next + "/"));
   _navigateTo("../" + next + "/");
 }
+
+document.addEventListener("contextmenu", (e) => e.preventDefault());
