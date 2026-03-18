@@ -161,7 +161,7 @@
             position: fixed;
             bottom: max(20px, env(safe-area-inset-bottom));
             left: max(20px, env(safe-area-inset-left));
-            z-index: 5000;
+            z-index: 50;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -180,6 +180,12 @@
             appearance: none;
             width: 120px;
             background: transparent;
+            padding: 14px 0;
+            outline: none;
+        }
+
+        input[type=range]:focus {
+            outline: none;
         }
 
         input[type=range]::-webkit-slider-runnable-track {
@@ -305,7 +311,32 @@
             canvas.addEventListener('touchend', handleTouchEnd, { passive: false });
             canvas.addEventListener('mousedown', handleMouseDown);
 
-            document.getElementById('bubbler-slider').addEventListener('input', (e) => {
+            const bubblerSlider = document.getElementById('bubbler-slider');
+
+            function setSliderFromPointer(e) {
+                const rect = bubblerSlider.getBoundingClientRect();
+                const min = parseInt(bubblerSlider.min);
+                const max = parseInt(bubblerSlider.max);
+                const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                const val = Math.round(min + ratio * (max - min));
+                bubblerSlider.value = val;
+                state.bubblerLevel = val / 100;
+            }
+
+            bubblerSlider.addEventListener('pointerdown', (e) => {
+                setSliderFromPointer(e);
+                bubblerSlider.setPointerCapture(e.pointerId);
+                e.stopPropagation();
+            });
+
+            bubblerSlider.addEventListener('pointermove', (e) => {
+                if (e.buttons > 0) {
+                    setSliderFromPointer(e);
+                    e.stopPropagation();
+                }
+            });
+
+            bubblerSlider.addEventListener('input', (e) => {
                 state.bubblerLevel = e.target.value / 100;
             });
 
